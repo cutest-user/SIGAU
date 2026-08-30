@@ -109,13 +109,21 @@ La solución estará organizada en tres componentes principales:
 Estructura del repositorio
 
 SIGAU/
+
 │
+
 ├── backend/       # API REST y lógica de negocio
+
 ├── frontend/      # Interfaz web
+
 ├── database/      # Scripts y recursos de la base de datos
+
 ├── docs/          # Documentación y entregas
+
 │
+
 ├── .gitignore
+
 └── README.md
 
 Documentación
