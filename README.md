@@ -1,143 +1,173 @@
-SIGAU
+# SIGAU
 
-Sistema de Gestión Integral de Arbolado Urbano
+## Sistema de Gestión Integral de Arbolado Urbano
 
-SIGAU es una aplicación web orientada a la gestión y trazabilidad de las demandas, inspecciones e intervenciones relacionadas con el arbolado urbano, independientemente de su origen.
+**Trabajo Final Integrador — Tecnicatura Universitaria en Programación**
 
-El sistema propone centralizar y relacionar las demandas vinculadas al arbolado urbano, permitiendo asociarlas a ejemplares, gestionar las inspecciones e intervenciones correspondientes y mantener la trazabilidad de todo el proceso.
+**Segunda Entrega — Diseño y Módulos**
+**Fecha de entrega:** 27/09/2026
 
-Objetivo
+### Integrantes- grupo 150
 
-Desarrollar un MVP web que permita centralizar, organizar y realizar el seguimiento de la información relacionada con las demandas y el ciclo de gestión de cada ejemplar arbóreo.
+* Agustín Lepka
+* Rosa Lourdes Paco
 
-El sistema estará orientado principalmente a inspectores de arbolado y personal administrativo.
+### Tutor
 
-Problemática
+Ing. Sergio Andrés Antonini
 
-La gestión del arbolado urbano genera información proveniente de múltiples fuentes, como reclamos ciudadanos, emergencias, solicitudes de gerencia, intervenciones de oficio e inspecciones planificadas.
+## Nombre y descripción general del proyecto
 
-La distribución de esta información entre diferentes sistemas, planillas y registros puede dificultar la relación entre demandas, ejemplares, inspecciones e intervenciones, generando duplicación de tareas, inconsistencias en los datos y dificultades para reconstruir el historial de un ejemplar.
+**SIGAU — Sistema de Gestión Integral de Arbolado Urbano** es una aplicación web orientada a la gestión y trazabilidad de las demandas, inspecciones e intervenciones relacionadas con el arbolado urbano.
 
-SIGAU busca abordar esta problemática mediante una herramienta especializada que permita centralizar la información y mantener la trazabilidad del proceso.
+El sistema busca centralizar la información proveniente de diferentes fuentes, relacionando las demandas con los ejemplares arbóreos, las inspecciones y las intervenciones realizadas. También permite registrar verificaciones, certificaciones y el historial de las acciones realizadas sobre cada ejemplar.
 
-Flujo general
+SIGAU está pensado principalmente para inspectores de arbolado y personal administrativo, con el objetivo de facilitar el seguimiento de las tareas y disponer de información organizada y trazable durante todo el proceso de gestión.
 
-El funcionamiento general de SIGAU se plantea mediante el siguiente flujo:
-Demanda → Identificación del ejemplar → Inspección → Intervención/es → Verificación → Certificación → Derivación
+## Objetivo
 
-Una demanda podrá relacionarse con uno o varios ejemplares y diferentes demandas podrán estar relacionadas con un mismo ejemplar.
+El objetivo de SIGAU es desarrollar un MVP web que permita centralizar, organizar y realizar el seguimiento de la información relacionada con las demandas y el ciclo de gestión de los ejemplares arbóreos.
 
-Las intervenciones podrán comprender una o varias tareas y contemplar dependencias entre ellas cuando la resolución de una demanda requiera una secuencia de trabajos.
+El sistema busca facilitar la relación entre demandas, ejemplares, inspecciones e intervenciones, manteniendo la trazabilidad de las acciones realizadas y permitiendo consultar el estado e historial de cada proceso.
 
-Alcance del MVP
+La solución estará orientada principalmente a inspectores de arbolado y personal administrativo, contemplando tanto el trabajo en territorio como las tareas de gestión y seguimiento.
 
-Incluye
+## Alcance del MVP
 
-- Registro y consulta de ejemplares arbóreos.
-- Registro de demandas provenientes de diferentes fuentes.
-- Asociación de una o varias demandas con un mismo ejemplar.
-- Registro de inspecciones, observaciones y fotografías.
-- Gestión y seguimiento de intervenciones.
-- Gestión de intervenciones que requieran una secuencia de tareas.
--  Registro de verificaciones y certificaciones.
-- Seguimiento de estados.
-- Consulta del historial de cada ejemplar.
-- Seguimiento de las demandas.
-- Organización de información para su posterior derivación a los circuitos correspondientes.
+### Incluye
 
-No incluye
+* Registro y consulta de ejemplares arbóreos.
+* Registro de demandas provenientes de diferentes fuentes.
+* Asociación entre demandas y uno o varios ejemplares.
+* Registro de inspecciones, observaciones y evidencias.
+* Gestión y seguimiento de intervenciones.
+* Definición de secuencias entre intervenciones cuando una tarea dependa de otra.
+* Registro de verificaciones y certificaciones.
+* Seguimiento de estados de demandas e intervenciones.
+* Consulta del historial y trazabilidad de los ejemplares.
+* Seguimiento de las demandas y sus intervenciones.
+* Organización de la información para su posterior derivación a los sistemas correspondientes.
 
-SIGAU no busca reemplazar los sistemas institucionales existentes, como:
+### No incluye
 
-- Sistema 147 de atención de reclamos.
-- SAP utilizado para la gestión de órdenes de trabajo.
-- Arbopedia u otros mecanismos institucionales de publicación.
-- Tampoco se contempla dentro del MVP la integración automática con dichos sistemas ni el desarrollo de un GIS municipal completo.
+SIGAU no busca reemplazar los sistemas institucionales existentes, entre ellos:
 
-Stack tecnológico
+* Sistema 147 de atención de reclamos.
+* SAP utilizado para la gestión de órdenes de trabajo.
+* Arbopedia u otros mecanismos institucionales de publicación.
 
-Backend
+Tampoco se contempla dentro del MVP la integración automática con dichos sistemas ni el desarrollo de un GIS municipal completo.
 
-- Java 21
-- Spring Boot
-- Spring Web / Spring MVC
-- Spring Data JPA
-- Hibernate
-- Maven
+## Tecnologías seleccionadas
+
+### Backend
+
+* Java 21
+* Spring Boot
+* Spring Web / Spring MVC
+* Spring Data JPA
+* Hibernate
+* Maven
 
 El backend será responsable de la lógica de negocio y de exponer una API REST para la comunicación con el frontend.
 
-Frontend
+### Frontend
 
-- React
-- JavaScript
-- HTML5
-- CSS3
-- Bootstrap
-El frontend estará orientado al trabajo administrativo y de inspección, contemplando su utilización desde dispositivos móviles durante el trabajo en territorio.
+* React
+* JavaScript
+* HTML5
+* CSS3
+* Bootstrap
 
-Base de datos
+El frontend estará orientado a las tareas administrativas y al trabajo de inspección en territorio.
 
-- MySQL
-- MySQL Workbench
+### Base de datos
 
-Se utilizará una base de datos relacional para mantener las relaciones e integridad de la información.
+* MySQL
+* MySQL Workbench
 
-Seguridad
+Se utilizará una base de datos relacional para mantener la integridad y las relaciones entre los datos del sistema.
 
-- Spring Security
-- JWT (JSON Web Token)
+### Seguridad
 
-Se implementará autenticación basada en roles para diferenciar los permisos de los distintos usuarios del sistema.
+* Spring Security
+* JWT (JSON Web Token)
 
-Control de versiones y gestión
+Se utilizará autenticación basada en roles para diferenciar los permisos de los usuarios.
 
-Git
-GitHub
-GitHub Projects
+### Control de versiones y gestión
 
-Despliegue
+* Git
+* GitHub
+* GitHub Projects
 
-Render - Backend
-Vercel - Frontend
-Servicio compatible con MySQL - Base de datos
+### Despliegue previsto
 
-Arquitectura prevista
+* Render — Backend
+* Vercel — Frontend
+* Servicio compatible con MySQL — Base de datos
 
-La solución estará organizada en tres componentes principales:
- 
-Estructura del repositorio
+El despliegue corresponde a una etapa posterior de implementación.
 
-SIGAU/
+## Estructura general del repositorio
 
-│
+El repositorio se organiza separando la aplicación, la base de datos y la documentación del proyecto. En esta segunda entrega, los directorios `backend` y `frontend` contienen la estructura inicial prevista para la futura implementación.
 
-├── backend/       # API REST y lógica de negocio
+```text
+sigau/
+├── README.md
+├── frontend/
+│   └── estructura inicial
+├── backend/
+│   └── estructura inicial
+├── database/
+│   ├── schema.sql
+│   └── seed.sql
+└── docs/
+    ├── segunda_entrega_SIGAU.pdf
+    ├── DER_SIGAU.png
+    ├── ESQUEMA_RELACIONAL_SIGAU.png
+    ├── ARQUITECTURA_SIGAU.png
+    ├── FLUJO_PRINCIPAL_SIGAU.png
+    ├── modelo-datos.md
+    ├── modulos.md
+    ├── arquitectura.md
+    └── api.md
+```
 
-├── frontend/      # Interfaz web
+La carpeta `database` contiene los scripts correspondientes al esquema y los datos iniciales de la base de datos. La carpeta `docs` reúne la documentación, los diagramas y los archivos de apoyo correspondientes al diseño del sistema.
 
-├── database/      # Scripts y recursos de la base de datos
+La implementación de la aplicación se realizará en una etapa posterior, una vez aprobado el diseño.
+## Documentación del proyecto
 
-├── docs/          # Documentación y entregas
+La documentación del proyecto se encuentra en el directorio `docs/` del repositorio.
 
-│
+* **`segunda_entrega_SIGAU.pdf`** — Documento principal de la segunda entrega, con el diseño de la base de datos, arquitectura, módulos y decisiones de diseño.
+* **`modelo-datos.md`** — Modelo de datos, entidades, relaciones, cardinalidades, restricciones e índices.
+* **`modulos.md`** — Descripción de los módulos del backend y frontend y su relación con los requisitos funcionales.
+* **`arquitectura.md`** — Arquitectura del sistema, capas, tecnologías seleccionadas y justificación técnica.
+* **`api.md`** — Documentación preliminar de la API REST prevista para la etapa de implementación.
+* **`DER_SIGAU.png`** — Diagrama Entidad-Relación conceptual.
+* **`ESQUEMA_RELACIONAL_SIGAU.png`** — Representación gráfica del esquema relacional.
+* **`ARQUITECTURA_SIGAU.png`** — Diagrama de la arquitectura propuesta.
+* **`FLUJO_PRINCIPAL_SIGAU.png`** — Diagrama del flujo general del sistema.
 
-├── .gitignore
+Los documentos `.md` complementan el documento principal y permiten consultar de manera independiente los distintos aspectos del diseño.
 
-└── README.md
+## Estado del proyecto
 
-Documentación
+Esta segunda entrega corresponde a la etapa de **diseño y planificación del sistema**.
 
-La documentación, propuestas y avances del proyecto se incorporarán progresivamente dentro del directorio docs/.
+En esta instancia se definieron:
 
-Integrantes
+* El modelo de datos y el esquema relacional.
+* Las reglas y flujos principales del sistema.
+* La arquitectura propuesta.
+* Los módulos del backend y frontend.
+* Las tecnologías seleccionadas.
+* La estructura inicial del repositorio.
+* La documentación y los diagramas correspondientes.
 
-Agustin Lepka.
-Rosa Lourdes Paco Laura.
+La implementación de la lógica de negocio, la API REST y la interfaz frontend queda prevista para una etapa posterior del proyecto.
 
-Tutor
-
-Sergio Andres Antonini
-
-Trabajo Final Integrador — Tecnicatura Universitaria en Programación
 
