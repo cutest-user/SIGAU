@@ -1,5 +1,5 @@
 package com.sigau.demanda.controller;
-
+import com.sigau.demanda.dto.CrearDemandaRequest;
 import com.sigau.demanda.Demanda;
 import com.sigau.demanda.service.DemandaService;
 import org.springframework.http.HttpStatus;
@@ -31,8 +31,9 @@ public class DemandaController {
     }
 
     @PostMapping
-    public ResponseEntity<Demanda> crear(@RequestBody Demanda demanda) {
-        Demanda demandaGuardada = demandaService.guardar(demanda);
+    public ResponseEntity<Demanda> crear(@RequestBody CrearDemandaRequest request) {
+
+        Demanda demandaGuardada = demandaService.guardar(request);
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)

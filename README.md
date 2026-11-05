@@ -67,7 +67,7 @@ Tampoco se contempla dentro del MVP la integración automática con dichos siste
 * Spring Web / Spring MVC
 * Spring Data JPA
 * Hibernate
-* Maven
+* Gradle
 
 El backend será responsable de la lógica de negocio y de exponer una API REST para la comunicación con el frontend.
 
