@@ -1,11 +1,12 @@
 
 package com.sigau.seguimiento.controller;
-
+import com.sigau.ejemplar.Ejemplar;
+import com.sigau.intervencion.Intervencion;
 import com.sigau.relacion.demandaejemplar.DemandaEjemplar;
 import com.sigau.seguimiento.dto.SeguimientoHistorialDTO;
 import com.sigau.seguimiento.service.SeguimientoService;
 import org.springframework.web.bind.annotation.*;
-
+import com.sigau.demanda.Demanda;
 import java.util.List;
 
 @RestController
@@ -28,6 +29,18 @@ public class SeguimientoController {
             @PathVariable Integer ejemplarId) {
 
         return seguimientoService.obtenerHistorial(ejemplarId);
+    }
+    @GetMapping("/intervenciones/pendientes")
+    public List<Intervencion> obtenerIntervencionesPendientes() {
+        return seguimientoService.obtenerIntervencionesPendientes();
+    }
+    @GetMapping("/demandas/estados")
+    public List<Demanda> obtenerDemandasConEstado() {
+        return seguimientoService.obtenerDemandasConEstado();
+    }
+    @GetMapping("/ejemplares/estados")
+    public List<Ejemplar> obtenerEjemplaresConEstado() {
+        return seguimientoService.obtenerEjemplaresConEstado();
     }
 }
 

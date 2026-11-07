@@ -2,6 +2,10 @@ package com.sigau.seguimiento.service;
 
 import com.sigau.certificacion.Certificacion;
 import com.sigau.certificacion.repository.CertificacionRepository;
+import com.sigau.demanda.Demanda;
+import com.sigau.demanda.repository.DemandaRepository;
+import com.sigau.ejemplar.Ejemplar;
+import com.sigau.ejemplar.repository.EjemplarRepository;
 import com.sigau.inspeccion.Inspeccion;
 import com.sigau.inspeccion.repository.InspeccionRepository;
 import com.sigau.intervencion.Intervencion;
@@ -23,19 +27,25 @@ public class SeguimientoService {
     private final IntervencionRepository intervencionRepository;
     private final VerificacionRepository verificacionRepository;
     private final CertificacionRepository certificacionRepository;
+    private final DemandaRepository demandaRepository;
+    private final EjemplarRepository ejemplarRepository;
 
     public SeguimientoService(
             DemandaEjemplarRepository demandaEjemplarRepository,
             InspeccionRepository inspeccionRepository,
             IntervencionRepository intervencionRepository,
             VerificacionRepository verificacionRepository,
-            CertificacionRepository certificacionRepository) {
+            CertificacionRepository certificacionRepository,
+            DemandaRepository demandaRepository,
+            EjemplarRepository ejemplarRepository) {
 
         this.demandaEjemplarRepository = demandaEjemplarRepository;
         this.inspeccionRepository = inspeccionRepository;
         this.intervencionRepository = intervencionRepository;
         this.verificacionRepository = verificacionRepository;
         this.certificacionRepository = certificacionRepository;
+        this.demandaRepository = demandaRepository;
+        this.ejemplarRepository = ejemplarRepository;
     }
 
     public List<DemandaEjemplar> buscarDemandasPorEjemplar(Integer ejemplarId) {
@@ -72,5 +82,24 @@ public class SeguimientoService {
                 verificaciones,
                 certificaciones
         );
+    }
+
+    public List<Intervencion> obtenerIntervencionesPendientes() {
+
+        List<String> estadosPendientes = List.of(
+                "PENDIENTE",
+                "PLANIFICADA",
+                "EN_EJECUCION"
+        );
+
+        return intervencionRepository.findByEstadoIn(estadosPendientes);
+    }
+
+    public List<Demanda> obtenerDemandasConEstado() {
+        return demandaRepository.findAll();
+    }
+
+    public List<Ejemplar> obtenerEjemplaresConEstado() {
+        return ejemplarRepository.findAll();
     }
 }

@@ -95,6 +95,59 @@ Se utilizará una base de datos relacional para mantener la integridad y las rel
 
 Se utilizará autenticación basada en roles para diferenciar los permisos de los usuarios.
 
+## Configuración y ejecución local
+
+### Requisitos
+
+Para ejecutar el backend se necesita:
+
+- Java 21.
+- MySQL.
+- Una base de datos configurada según el esquema del proyecto.
+
+### Variables de entorno
+
+El backend utiliza las siguientes variables de entorno:
+
+| Variable | Descripción |
+|---|---|
+| `SIGAU_JWT_SECRET` | Clave secreta utilizada para firmar y validar los tokens JWT. Debe tener al menos 32 bytes. |
+| `SIGAU_ADMIN_PASSWORD` | Contraseña inicial del usuario administrativo. Solo es necesaria cuando dicho usuario todavía no existe en la base de datos. |
+
+Estas variables deben configurarse antes de iniciar la aplicación. No deben almacenarse en el repositorio ni incluirse en archivos de configuración versionados.
+
+En Windows PowerShell:
+
+```powershell
+$env:SIGAU_JWT_SECRET = "ReemplazarPorUnaClavePropiaDeAlMenos32Caracteres"
+$env:SIGAU_ADMIN_PASSWORD = "DefinirUnaContraseñaSegura"
+```
+
+La contraseña administrativa solo se utiliza durante la creación inicial del usuario. Si el usuario ya existe, el inicializador no modifica sus credenciales.
+
+### Compilación
+
+Desde el directorio `backend`, ejecutar:
+
+```powershell
+.\gradlew.bat build
+```
+
+### Ejecución
+
+Para iniciar el backend localmente:
+
+```powershell
+.\gradlew.bat bootRun
+```
+
+La API REST queda disponible en:
+
+`http://localhost:8080`
+
+Las variables de entorno deben configurarse nuevamente si se abre una nueva sesión de PowerShell.
+
+
 ### Control de versiones y gestión
 
 * Git
@@ -111,8 +164,7 @@ El despliegue corresponde a una etapa posterior de implementación.
 
 ## Estructura general del repositorio
 
-El repositorio se organiza separando la aplicación, la base de datos y la documentación del proyecto. En esta segunda entrega, los directorios `backend` y `frontend` contienen la estructura inicial prevista para la futura implementación.
-
+El repositorio organiza el proyecto separando la aplicación, la base de datos y la documentación. El directorio `backend` contiene la implementación de la API REST, mientras que `frontend` contiene la aplicación cliente. La carpeta `database` reúne los scripts del esquema y los datos iniciales, y `docs` contiene la documentación técnica y los diagramas del sistema.
 ```text
 sigau/
 ├── README.md
@@ -156,18 +208,17 @@ Los documentos `.md` complementan el documento principal y permiten consultar de
 
 ## Estado del proyecto
 
-Esta segunda entrega corresponde a la etapa de **diseño y planificación del sistema**.
+## Estado del proyecto
 
-En esta instancia se definieron:
+El proyecto se encuentra en la etapa de implementación del MVP.
 
-* El modelo de datos y el esquema relacional.
-* Las reglas y flujos principales del sistema.
-* La arquitectura propuesta.
-* Los módulos del backend y frontend.
-* Las tecnologías seleccionadas.
-* La estructura inicial del repositorio.
-* La documentación y los diagramas correspondientes.
+Actualmente se avanzó en:
 
-La implementación de la lógica de negocio, la API REST y la interfaz frontend queda prevista para una etapa posterior del proyecto.
+- Desarrollo de la API REST con Java y Spring Boot.
+- Implementación de los módulos de ejemplares, demandas, inspecciones, intervenciones, verificaciones, certificaciones y derivaciones.
+- Desarrollo de consultas de seguimiento e historial.
+- Implementación del módulo de usuarios.
+- Autenticación mediante JWT y autorización basada en roles.
+- Validación de datos y manejo centralizado de errores.
 
-
+Se encuentra pendiente el desarrollo del módulo de reportes (RF12), la integración con el frontend y las tareas de integración y verificación final del sistema.

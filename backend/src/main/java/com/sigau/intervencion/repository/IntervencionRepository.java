@@ -9,4 +9,6 @@ public interface IntervencionRepository
         extends JpaRepository<Intervencion, Integer> {
 
     List<Intervencion> findByEjemplar_Id(Integer ejemplarId);
+
+    List<Intervencion> findByEstadoIn(List<String> estados);
 }
