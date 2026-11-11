@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+import com.sigau.demanda.dto.ActualizarDemandaRequest;
 @RestController
 @RequestMapping("/api/demandas")
 public class DemandaController {
@@ -38,5 +38,16 @@ public class DemandaController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(demandaGuardada);
+
+
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Demanda> actualizar(
+            @PathVariable Integer id,
+            @RequestBody ActualizarDemandaRequest request) {
+
+        return demandaService.actualizar(id, request)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 }

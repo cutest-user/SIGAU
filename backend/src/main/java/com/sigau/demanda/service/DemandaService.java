@@ -1,5 +1,5 @@
 package com.sigau.demanda.service;
-
+import com.sigau.demanda.dto.ActualizarDemandaRequest;
 import com.sigau.common.Ubicacion;
 import com.sigau.common.repository.UbicacionRepository;
 import com.sigau.demanda.Demanda;
@@ -74,4 +74,37 @@ public class DemandaService {
 
         return demandaRepository.save(demanda);
     }
+
+    public Optional<Demanda> actualizar(Integer id, ActualizarDemandaRequest request) {
+
+        Optional<Demanda> resultado = demandaRepository.findById(id);
+
+        if (resultado.isEmpty()) {
+            return Optional.empty();
+        }
+
+        Demanda demanda = resultado.get();
+
+        demanda.setOrigen(
+                origenDemandaRepository.findById(request.getOrigenId())
+                        .orElseThrow(() -> new RuntimeException("Origen de demanda no encontrado"))
+        );
+
+        if (request.getUbicacionId() != null) {
+            Ubicacion ubicacion = ubicacionRepository.findById(request.getUbicacionId())
+                    .orElseThrow(() -> new RuntimeException("Ubicación no encontrada"));
+
+            demanda.setUbicacion(ubicacion);
+        } else {
+            demanda.setUbicacion(null);
+        }
+
+        demanda.setMotivo(request.getMotivo());
+        demanda.setDescripcion(request.getDescripcion());
+        demanda.setPrioridad(request.getPrioridad());
+        demanda.setObservaciones(request.getObservaciones());
+
+        return Optional.of(demandaRepository.save(demanda));
+    }
+
 }

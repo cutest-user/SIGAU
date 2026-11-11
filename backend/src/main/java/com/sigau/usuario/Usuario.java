@@ -1,5 +1,5 @@
 package com.sigau.usuario;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -19,6 +19,7 @@ public class Usuario {
     @Column(length = 150)
     private String email;
 
+    @JsonIgnore
     @Column(name = "password_hash", length = 255)
     private String passwordHash;
 

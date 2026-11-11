@@ -71,6 +71,28 @@ Tampoco se contempla dentro del MVP la integración automática con dichos siste
 
 El backend será responsable de la lógica de negocio y de exponer una API REST para la comunicación con el frontend.
 
+### Configuración y ejecución del backend
+
+**Requisitos previos:** para ejecutar el backend se requiere Java JDK 21 y MySQL. También debe estar creada y configurada la base de datos `sigau`.
+
+**Configuración de variables de entorno:** antes de iniciar la aplicación, es necesario configurar la variable `SIGAU_JWT_SECRET`, utilizada por el sistema para generar la clave de firma de los tokens JWT. En PowerShell, desde la carpeta `backend`, ejecutar:
+
+```powershell
+$env:SIGAU_JWT_SECRET = "REEMPLAZAR_POR_UNA_CLAVE_SECRETA_PROPIA"
+```
+
+Cada entorno debe utilizar su propia clave secreta. Este valor no debe compartirse ni incluirse en el repositorio.
+
+La conexión con MySQL se configura en `application.properties`, donde deben establecerse la URL de conexión, el usuario y la contraseña de la base de datos. Se recomienda utilizar variables de entorno para los datos sensibles.
+
+**Compilación y ejecución:** desde la carpeta `backend`, ejecutar los siguientes comandos:
+
+```powershell
+.\gradlew.bat build
+.\gradlew.bat bootRun
+```
+
+Una vez iniciada correctamente la aplicación, el backend estará disponible en `http://localhost:8080`.
 ### Frontend
 
 * React
@@ -206,7 +228,6 @@ La documentación del proyecto se encuentra en el directorio `docs/` del reposit
 
 Los documentos `.md` complementan el documento principal y permiten consultar de manera independiente los distintos aspectos del diseño.
 
-## Estado del proyecto
 
 ## Estado del proyecto
 
