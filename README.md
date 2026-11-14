@@ -240,3 +240,10 @@ Está implementado:
 - Pruebas unitarias de las reglas de negocio.
 
 Pendiente: pruebas funcionales de punta a punta con ambos roles y el despliegue (Render, Vercel y base de datos en la nube).
+
+## Sistema desplegado
+
+- Frontend: https://sigau.vercel.app (desplegado en Vercel).
+- Backend y base de datos: no están desplegados en línea. Se ejecutan en entorno local siguiendo la sección "Configuración y ejecución local".
+
+El enlace muestra la interfaz y la pantalla de inicio de sesión, pero no permite ingresar porque depende del backend local. El funcionamiento completo del sistema se muestra en el video.
