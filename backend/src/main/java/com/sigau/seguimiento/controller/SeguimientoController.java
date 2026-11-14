@@ -1,0 +1,55 @@
+package com.sigau.seguimiento.controller;
+
+import com.sigau.demanda.Demanda;
+import com.sigau.ejemplar.Ejemplar;
+import com.sigau.intervencion.Intervencion;
+import com.sigau.relacion.demandaejemplar.DemandaEjemplar;
+import com.sigau.seguimiento.dto.SeguimientoDemandaDTO;
+import com.sigau.seguimiento.dto.SeguimientoHistorialDTO;
+import com.sigau.seguimiento.service.SeguimientoService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/seguimiento")
+public class SeguimientoController {
+
+    private final SeguimientoService seguimientoService;
+
+    public SeguimientoController(SeguimientoService seguimientoService) {
+        this.seguimientoService = seguimientoService;
+    }
+
+    @GetMapping("/ejemplar/{ejemplarId}/demandas")
+    public List<DemandaEjemplar> buscarDemandasPorEjemplar(
+            @PathVariable Integer ejemplarId) {
+        return seguimientoService.buscarDemandasPorEjemplar(ejemplarId);
+    }
+    @GetMapping("/ejemplar/{ejemplarId}/historial")
+    public SeguimientoHistorialDTO obtenerHistorial(
+            @PathVariable Integer ejemplarId) {
+
+        return seguimientoService.obtenerHistorial(ejemplarId);
+    }
+    @GetMapping("/demanda/{demandaId}")
+    public SeguimientoDemandaDTO obtenerDemanda(
+            @PathVariable Integer demandaId) {
+
+        return seguimientoService.obtenerDemanda(demandaId);
+    }
+
+    @GetMapping("/intervenciones/pendientes")
+    public List<Intervencion> obtenerIntervencionesPendientes() {
+        return seguimientoService.obtenerIntervencionesPendientes();
+    }
+    @GetMapping("/demandas/estados")
+    public List<Demanda> obtenerDemandasConEstado() {
+        return seguimientoService.obtenerDemandasConEstado();
+    }
+    @GetMapping("/ejemplares/estados")
+    public List<Ejemplar> obtenerEjemplaresConEstado() {
+        return seguimientoService.obtenerEjemplaresConEstado();
+    }
+}
+
