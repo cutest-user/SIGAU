@@ -196,6 +196,7 @@ sigau/
 │   ├── schema.sql
 │   └── seed.sql
 └── docs/
+    ├── TFI SIGAU.pdf
     ├── segunda_entrega_SIGAU.pdf
     ├── DER_SIGAU.png
     ├── ESQUEMA_RELACIONAL_SIGAU.png
@@ -213,6 +214,7 @@ La carpeta `database` contiene los scripts correspondientes al esquema y los dat
 
 La documentación del proyecto se encuentra en el directorio `docs/` del repositorio.
 
+* **`TFI SIGAU.pdf`** — Informe del despliegue final del sistema y con el link del video.
 * **`segunda_entrega_SIGAU.pdf`** — Documento principal de la segunda entrega, con el diseño de la base de datos, arquitectura, módulos y decisiones de diseño.
 * **`modelo-datos.md`** — Modelo de datos, entidades, relaciones, cardinalidades, restricciones e índices.
 * **`modulos.md`** — Descripción de los módulos del backend y frontend y su relación con los requisitos funcionales.
