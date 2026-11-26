@@ -230,7 +230,7 @@ Los documentos `.md` complementan el documento principal y permiten consultar de
 
 ## Estado del proyecto
 
-El proyecto se encuentra en la etapa de integración y pruebas del MVP.
+El proyecto se encuentra en la etapa de integración y pruebas del MVP. El funcionamiento completo del sistema se muestra en el video.
 
 Está implementado:
 
@@ -241,11 +241,22 @@ Está implementado:
 - Frontend en React con inicio de sesión y pantallas para todos los módulos.
 - Pruebas unitarias de las reglas de negocio.
 
-Pendiente: pruebas funcionales de punta a punta con ambos roles y el despliegue (Render, Vercel y base de datos en la nube).
-
 ## Sistema desplegado
 
-- Frontend: https://sigau.vercel.app (desplegado en Vercel).
-- Backend y base de datos: no están desplegados en línea. Se ejecutan en entorno local siguiendo la sección "Configuración y ejecución local".
+El sistema se encuentra completamente desplegado y funcional en la nube:
 
-El enlace muestra la interfaz y la pantalla de inicio de sesión, pero no permite ingresar porque depende del backend local. El funcionamiento completo del sistema se muestra en el video.
+Frontend: https://sigau.vercel.app — desplegado en Vercel.
+
+Backend: API REST desplegada en Render.
+
+Base de datos: MySQL gestionado en Aiven.
+
+La comunicación entre el frontend y el backend se realiza a través de la API REST, con CORS configurado para permitir el origen del frontend en Vercel. La base de datos en Aiven requiere conexión SSL (sslMode=REQUIRED) y las credenciales se gestionan mediante variables de entorno en Render, sin exponerse en el repositorio.
+
+## Notas sobre el despliegue
+
+El backend se construye con Gradle y se ejecuta como un JAR de Spring Boot en Render.
+
+La base de datos en Aiven fue inicializada con los scripts schema.sql y seed.sql de la carpeta database.
+
+El frontend en Vercel consume la API del backend y permite el inicio de sesión con el usuario administrativo inicial.
